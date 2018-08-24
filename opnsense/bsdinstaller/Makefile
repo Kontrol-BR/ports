@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	bsdinstaller
-PORTVERSION=	18.1
+PORTVERSION=	18.7
 #PORTREVISION=	0 # GH_TAGNAME
 CATEGORIES=	sysutils
 
@@ -16,7 +16,7 @@ RUN_DEPENDS=	cpdup:sysutils/cpdup
 USE_LDCONFIG=	yes
 
 USE_GITHUB=	yes
-GH_ACCOUNT=	kontrol-br
-#GH_TAGNAME=	56e41c1
+GH_ACCOUNT=	opnsense
+#GH_TAGNAME=	a95d672
 
 .include <bsd.port.mk>
