@@ -17,6 +17,7 @@ LIB_DEPENDS=	libfontconfig.so:x11-fonts/fontconfig \
 		libfreetype.so:print/freetype2
 
 USES=		pkgconfig
+USE_HARDENING=	cfi safestack
 USE_XORG=	x11 xext xft
 
 PLIST_FILES=	bin/st man/man1/st.1.gz
@@ -28,6 +29,18 @@ PORTDATA=	config.def.h st.info
 PORTDOCS=	FAQ LEGACY README TODO
 
 OPTIONS_DEFINE=	DOCS
+OPTIONS_RADIO=	PATCHES
+OPTIONS_RADIO_PATCHES=	SCROLLBACK SOLARIZED
+SCROLLBACK_DESC=	Scroll back through terminal output
+SOLARIZED_DESC=	Use Solarized color scheme
+
+SCROLLBACK_EXTRA_PATCHES=	${PATCHDIR}/extra-scrollback-patch-config.def.h \
+		${PATCHDIR}/extra-scrollback-patch-st.c \
+		${PATCHDIR}/extra-scrollback-patch-st.h
+
+SOLARIZED_EXTRA_PATCHES=	${PATCHDIR}/extra-solarized-patch-config.def.h \
+		${PATCHDIR}/extra-solarized-patch-x.c \
+		${PATCHDIR}/extra-solarized-patch-st.h
 
 SUB_FILES=	pkg-message
 

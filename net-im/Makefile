@@ -31,7 +31,6 @@
     SUBDIR += hs-haskell-xmpp
     SUBDIR += icmpchat
     SUBDIR += icqlib
-    SUBDIR += imspector
     SUBDIR += jabber
     SUBDIR += jabber.el
     SUBDIR += jabberd
@@ -87,7 +86,6 @@
     SUBDIR += licq-qt-gui
     SUBDIR += linux-telegram-desktop
     SUBDIR += loudmouth
-    SUBDIR += mastodon
     SUBDIR += matterircd
     SUBDIR += mbpurple
     SUBDIR += mcabber

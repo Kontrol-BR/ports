@@ -2,17 +2,19 @@
 # $FreeBSD$
 
 PORTNAME=	backports.weakref
-DISTVERSION=	1.0rc1
+DISTVERSION=	1.0
+DISTVERSIONSUFFIX=	.post1
 CATEGORIES=	devel python
 MASTER_SITES=	CHEESESHOP
 PKGNAMEPREFIX=	${PYTHON_PKGNAMEPREFIX}
 
-MAINTAINER=	amutu@amutu.com
+MAINTAINER=	sunpoet@FreeBSD.org
 COMMENT=	Backport of the weakref module from Python 3.4
 
 LICENSE=	PSFL
+LICENSE_FILE=	${WRKSRC}/LICENSE
 
-BUILD_DEPENDS=	${PYTHON_PKGNAMEPREFIX}setuptools_scm>0:devel/py-setuptools_scm@${FLAVOR}
+BUILD_DEPENDS=	${PYTHON_PKGNAMEPREFIX}setuptools_scm>0:devel/py-setuptools_scm@${PY_FLAVOR}
 
 NO_ARCH=	yes
 USES=		python:2.7

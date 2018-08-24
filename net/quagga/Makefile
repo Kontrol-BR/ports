@@ -3,6 +3,7 @@
 
 PORTNAME=	quagga
 PORTVERSION=	1.2.4
+PORTREVISION=	1
 CATEGORIES=	net ipv6
 MASTER_SITES=	SAVANNAH
 
@@ -13,7 +14,7 @@ LICENSE=	GPLv2
 
 BUILD_DEPENDS=	gawk:lang/gawk
 
-CONFLICTS=	openbgpd openospfd zebra quagga-esr frr pimd
+CONFLICTS=	frr3 frr4 frr5 openbgpd pimd zebra
 
 # Quagga uses shared libraries as plugins, but
 # does not fail with safestack as no port depends

@@ -4,7 +4,7 @@
 PORTNAME=		open-vm-tools
 PORTVERSION=		${RELEASE_VER}
 DISTVERSIONPREFIX=	stable-
-PORTREVISION=		6
+PORTREVISION=		2
 PORTEPOCH=		2
 CATEGORIES=		emulators
 
@@ -18,8 +18,8 @@ ONLY_FOR_ARCHS=		amd64 i386
 
 LIB_DEPENDS=		libmspack.so:archivers/libmspack
 
-RELEASE_VER=		10.2.0
-BUILD_VER=		7253323
+RELEASE_VER=		10.2.5
+BUILD_VER=		8068406
 
 OPTIONS_DEFINE=		DNET LIBNOTIFY OPENSSL X11
 OPTIONS_DEFAULT=	DNET LIBNOTIFY OPENSSL X11
@@ -30,7 +30,7 @@ DNET_DESC=		libdnet support
 LIBNOTIFY_DESC=		Desktop notification support
 
 X11_CONFIGURE_WITH=	x gtk2 gtkmm
-X11_USE=		xorg=ice,sm,x11,xext,xi,xinerama,xineramaproto,xrandr,xrender,xtst \
+X11_USE=		xorg=ice,sm,x11,xext,xi,xinerama,xorgproto,xrandr,xrender,xtst \
 			gnome=gdkpixbuf2,gtk20,gtkmm24
 X11_LIB_DEPENDS=	libfontconfig.so:x11-fonts/fontconfig \
 			libfreetype.so:print/freetype2
@@ -64,10 +64,6 @@ USE_RC_SUBR=		vmware-guestd vmware-kmod
 INSTALL_TARGET=		install-strip
 
 .include <bsd.port.options.mk>
-
-.if ${OPSYS} == FreeBSD && ${OSVERSION} > 1200063
-EXTRA_PATCHES=	${PATCHDIR}/extra-patch-modules_freebsd_vmxnet_net__compat.h
-.endif
 
 .if ${PORT_OPTIONS:MX11}
 CONFLICTS=		open-vm-tools-nox11-[0-9]*

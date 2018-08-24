@@ -2,8 +2,8 @@
 # $FreeBSD$
 
 PORTNAME=	opnsense-update
-PORTVERSION=	18.1.8
-#PORTREVISION=	0 # GH_TAGNAME
+PORTVERSION=	18.7.1
+PORTREVISION=	0 # GH_TAGNAME
 CATEGORIES=	sysutils
 
 MAINTAINER=	franco@opnsense.org
@@ -20,6 +20,6 @@ USE_HARDENING=	safestack
 USE_GITHUB=	yes
 GH_ACCOUNT=	kontrol-br
 GH_PROJECT=	update
-#GH_TAGNAME=	824e182
+#GH_TAGNAME=	979fcfc
 
 .include <bsd.port.mk>

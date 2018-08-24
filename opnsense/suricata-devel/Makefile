@@ -2,7 +2,7 @@
 
 PORTNAME=	suricata
 PKGNAMESUFFIX=	-devel
-DISTVERSION=	4.1.0-beta1
+DISTVERSION=	4.1.0-rc1
 CATEGORIES=	security
 MASTER_SITES=	http://www.openinfosecfoundation.org/download/
 
@@ -32,7 +32,7 @@ INSTALL_TARGET=		install-strip
 TEST_TARGET=		check
 
 OPTIONS_DEFINE=		GEOIP IPFW JSON NETMAP NSS PORTS_PCAP PRELUDE \
-			REDIS SC TESTS
+			REDIS RUST SC TESTS
 OPTIONS_DEFINE_amd64=	HYPERSCAN
 OPTIONS_DEFAULT=	IPFW JSON NETMAP PRELUDE
 OPTIONS_SUB=		yes
@@ -46,13 +46,14 @@ GEOIP_DESC=		GeoIP support
 HYPERSCAN_DESC=		Hyperscan support
 IPFW_DESC=		IPFW and IP Divert support for inline IDP
 JSON_DESC=		JSON output support
-LUA_DESC=		LUA scripting support
 LUAJIT_DESC=		LuaJIT scripting support
+LUA_DESC=		LUA scripting support
 NETMAP_DESC=		Netmap support for inline IDP
 NSS_DESC=		File checksums and SSL/TLS fingerprinting
 PORTS_PCAP_DESC=	Use libpcap from ports
 PRELUDE_DESC=		Prelude support for NIDS alerts
 REDIS_DESC=		Redis output support
+RUST_DESC=		Rust parser support (experimental)
 SC_DESC=		Suricata socket client (suricatasc)
 TESTS_DESC=		Unit tests in suricata binary
 
@@ -105,6 +106,9 @@ REDIS_CONFIGURE_ON=		--enable-hiredis \
 				--with-libhiredis-includes=${LOCALBASE}/include \
 				--with-libhiredis-libraries=${LOCALBASE}/lib
 
+RUST_BUILD_DEPENDS=		rustc:lang/rust
+RUST_CONFIGURE_ENABLE=		rust
+
 SC_USES=			python:2.7
 SC_CONFIGURE_ENABLE=		python
 
@@ -126,10 +130,6 @@ CONFIGURE_ARGS+=--enable-gccprotect \
 
 CONFIG_DIR?=	${ETCDIR}
 CONFIG_FILES=	suricata.yaml classification.config reference.config threshold.config
-RULES_DIR=	${CONFIG_DIR}/rules
-RULES_FILES=	app-layer-events.rules decoder-events.rules dns-events.rules files.rules \
-		http-events.rules modbus-events.rules smtp-events.rules stream-events.rules \
-		tls-events.rules
 LOGS_DIR?=	/var/log/${PORTNAME}
 
 pre-patch:
@@ -140,13 +140,9 @@ post-patch-NSS-off:
 
 post-install:
 	@${MKDIR} ${STAGEDIR}${CONFIG_DIR}
-	@${MKDIR} ${STAGEDIR}${RULES_DIR}
 	@${MKDIR} ${STAGEDIR}${LOGS_DIR}
 .for f in ${CONFIG_FILES}
 	${INSTALL_DATA} ${WRKSRC}/${f} ${STAGEDIR}${CONFIG_DIR}/${f}.sample
-.endfor
-.for f in ${RULES_FILES}
-	${INSTALL_DATA} ${WRKSRC}/rules/${f} ${STAGEDIR}${RULES_DIR}/${f}
 .endfor
 
 post-install-SC-on:

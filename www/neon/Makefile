@@ -2,9 +2,10 @@
 # $FreeBSD$
 
 PORTNAME=	neon
-PORTVERSION=	0.30.1
+PORTVERSION=	0.30.2
+PORTREVISION=	1
 CATEGORIES=	www
-MASTER_SITES=	http://www.webdav.org/neon/
+MASTER_SITES=	LOCAL/lev
 
 MAINTAINER=	lev@FreeBSD.org
 COMMENT=	HTTP and WebDAV client library for Unix systems
@@ -42,6 +43,8 @@ PROXY_LIB_DEPENDS=	libproxy.so:net/libproxy
 
 .include <bsd.port.options.mk>
 
+CFLAGS=		-DOPENSSL_IS_LIBRESSL
+
 CONFIGURE_ARGS+=--enable-shared \
 		--with-libs=${LOCALBASE}:${PREFIX}
 
@@ -59,10 +62,4 @@ post-patch:
 post-install:
 	${STRIP_CMD} ${STAGEDIR}${PREFIX}/lib/libneon.so.27.*
 
-.include <bsd.port.pre.mk>
-
-.if ${PORT_OPTIONS:MOPENSSL} && ${SSL_DEFAULT:Mopenssl-devel}
-BROKEN=		Does not build with openssl-devel
-.endif
-
-.include <bsd.port.post.mk>
+.include <bsd.port.mk>

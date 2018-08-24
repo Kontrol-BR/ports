@@ -2,7 +2,8 @@
 # $FreeBSD$
 
 PORTNAME=	newsboat
-PORTVERSION=	2.11.1
+PORTVERSION=	2.12
+PORTREVISION=	1
 DISTVERSIONPREFIX=	r
 CATEGORIES=	www
 
@@ -20,6 +21,7 @@ LIB_DEPENDS=	libstfl.so:devel/stfl \
 USES=		compiler:c++11-lib gettext gmake iconv:translit ncurses \
 		pkgconfig sqlite shebangfix ssl
 USE_GITHUB=	yes
+USE_HARDENING=	safestack
 USE_CXXSTD=	gnu++11
 USE_GNOME=	libxml2
 

@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	palemoon
-DISTVERSION=	27.9.2
+DISTVERSION=	27.9.4
 DISTVERSIONSUFFIX=_Release
 CATEGORIES=	www ipv6
 
@@ -27,6 +27,7 @@ GH_ACCOUNT=	MoonchildProductions
 GH_PROJECT=	Pale-Moon
 
 USE_GECKO=	gecko
+USE_HARDENING=	pie:off
 MOZ_PKGCONFIG_FILES=	# empty
 USE_MOZILLA=	-soundtouch
 

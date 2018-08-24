@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	postfix
-PORTVERSION=	3.3.0
+DISTVERSION=	3.3.1
 PORTREVISION?=	1
 PORTEPOCH=	1
 CATEGORIES=	mail ipv6
@@ -33,6 +33,7 @@ CONFLICTS_INSTALL?=	courier-0.* opensmtpd-[0-9]* \
 USERS=		postfix
 GROUPS=		mail maildrop postfix
 USES=		shebangfix cpe
+USE_HARDENING=	safestack
 SHEBANG_FILES=	auxiliary/qshape/qshape.pl
 
 USE_RC_SUBR=	postfix
@@ -106,7 +107,7 @@ PLIST_SUB+=	BMAN=""
 PLIST_SUB+=	PFETC=${ETCDIR}
 
 # check if mailwrapper supports $LOCALBASE
-.if ${OPSYS} == FreeBSD && (${OSVERSION} >= 1002506 || ${OSVERSION} >= 1100094)
+.if ${OPSYS} == FreeBSD
 SUB_LIST+=	USE_LOCALBASE_MAILER_CONF="yes" MC_PREFIX="${LOCALBASE}"
 .else
 SUB_LIST+=	USE_LOCALBASE_MAILER_CONF="no" MC_PREFIX=""

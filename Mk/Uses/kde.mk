@@ -70,12 +70,12 @@ KDE_PLASMA_VERSION?=		5.12.5
 KDE_PLASMA_BRANCH?=		stable
 
 # Current KDE frameworks.
-KDE_FRAMEWORKS_VERSION?=	5.46.0
+KDE_FRAMEWORKS_VERSION?=	5.48.0
 KDE_FRAMEWORKS_BRANCH?= 	stable
 
 # Current KDE applications.
-KDE_APPLICATIONS_VERSION?=	18.04.1
-KDE_APPLICATIONS_SHLIB_VER?=	5.8.1
+KDE_APPLICATIONS_VERSION?=	18.04.3
+KDE_APPLICATIONS_SHLIB_VER?=	5.8.3
 KDE_APPLICATIONS_BRANCH?=	stable
 # Upstream moves old software to Attic/. Specify the newest applications release there.
 # Only the major version is used for the comparison.
@@ -124,14 +124,14 @@ PORTVERSION?=		${KDE4_VERSION}
 MASTER_SITES?=		KDE/${KDE4_BRANCH}/${KDE4_VERSION}/src
 DIST_SUBDIR?=		KDE/${KDE4_VERSION}
 PKGNAMESUFFIX=		-kde4
-CONFLICTS_INSTALL=	${PORTNAME:C/-kde4//}-4.*
+CONFLICTS_INSTALL=	${PORTNAME}
 .    elif  ${_KDE_CATEGORY:Mkde-applications}
 PORTVERSION?=		${KDE_APPLICATIONS_VERSION}
 .      if ${_KDE_VERSION:M4}
 CONFLICTS_INSTALL?=	${PORTNAME}-[0-9]*
 PKGNAMESUFFIX?=		-kde4
 .      else
-CONFLICTS_INSTALL?=	${PORTNAME}-kde4-[0-9]*
+CONFLICTS_INSTALL?=	${PORTNAME}-kde4
 .      endif
 # Decide where the file lies on KDE's servers: Check whether the file lies in Attic
 .      if ${KDE_APPLICATIONS_VERSION:R:R} <= ${_KDE_APPLICATIONS_ATTIC_VERSION:R:R}
@@ -802,7 +802,7 @@ kdepim-apps-libs_PORT=	deskutils/kdepim-apps-libs
 kdepim-apps-libs_LIB=	libKF5SendLater.so
 
 kdepim-runtime5_PORT=	deskutils/kdepim-runtime
-kdepim-runtime5_LIB=	libakonadi-filestore.so.5
+kdepim-runtime5_PATH=	${KDE_PREFIX}/lib/sasl2/libkdexoauth2.so
 
 kontactinterface_PORT=	net/kontactinterface
 kontactinterface_LIB=	libKF5KontactInterface.so

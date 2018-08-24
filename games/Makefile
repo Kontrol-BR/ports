@@ -74,6 +74,7 @@
     SUBDIR += ballerburg
     SUBDIR += banihstypos
     SUBDIR += barbie_seahorse_adventures
+    SUBDIR += barony
     SUBDIR += barrage
     SUBDIR += bass
     SUBDIR += bastet
@@ -310,6 +311,7 @@
     SUBDIR += freedroidrpg
     SUBDIR += freeminer
     SUBDIR += freeminer-default
+    SUBDIR += freeorion
     SUBDIR += freera
     SUBDIR += freesweep
     SUBDIR += freesynd
@@ -674,6 +676,7 @@
     SUBDIR += mt_gtk_client
     SUBDIR += mtaserver
     SUBDIR += mudmagic
+    SUBDIR += multimc
     SUBDIR += mvdsv
     SUBDIR += nInvaders
     SUBDIR += nadar
@@ -725,6 +728,7 @@
     SUBDIR += oolite
     SUBDIR += oonsoo
     SUBDIR += open-adventure
+    SUBDIR += openage
     SUBDIR += openalchemist
     SUBDIR += openarena
     SUBDIR += openarena-data

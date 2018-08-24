@@ -3,13 +3,15 @@
 
 PORTNAME=	scribe
 DISTVERSION=	2.2.2013.04.15
-PORTREVISION=	12
+PORTREVISION=	13
 CATEGORIES=	net
 
 MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Aggregating log data streamed in real time
 
 LICENSE=	APACHE20
+
+BROKEN=		fails to build
 
 BUILD_DEPENDS=	fb303>0:devel/fb303 \
 		thrift:devel/thrift
